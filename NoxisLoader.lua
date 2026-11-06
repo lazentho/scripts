@@ -1,7 +1,7 @@
 -- NOXIS LOADER
 -- gameId -> raw script url. One line per game.
 local SCRIPTS = {
-    [10708913337] = 'https://raw.githubusercontent.com/lazentho/Base/refs/heads/main/AnimeDice.lua',
+    [10708913337] = 'https://raw.githubusercontent.com/lazentho/scripts/refs/heads/main/AnimeDice.lua',
 }
 
 local function popup(message)
