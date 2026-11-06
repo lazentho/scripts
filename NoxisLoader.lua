@@ -2,6 +2,7 @@
 -- gameId -> raw script url. One line per game.
 local SCRIPTS = {
     [10708913337] = 'https://raw.githubusercontent.com/lazentho/scripts/refs/heads/main/AnimeDice.lua',
+    [10773907070] = 'https://raw.githubusercontent.com/lazentho/scripts/refs/heads/main/ChessBestMove.lua',
 }
 
 local function popup(message)
@@ -73,12 +74,13 @@ local function popup(message)
     end)
 end
 
-local url = SCRIPTS[game.GameId]
+local url = SCRIPTS[game.GameId] or SCRIPTS[game.PlaceId]
 if not url then
     popup('There is no script for this game.')
     return
 end
 
 pcall(function()
-    loadstring(game:HttpGet(url))()
+    local bust = url .. (url:find('?', 1, true) and '&' or '?') .. 'v=' .. tostring(os.time())
+    loadstring(game:HttpGet(bust))()
 end)
